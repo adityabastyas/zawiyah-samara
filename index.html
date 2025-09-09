@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zawiyah Samara</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: #fff;
+        color: #333;
+      }
+      .navbar {
+        background: #fff;
+        border-bottom: 2px solid #d4af37;
+      }
+      .navbar-brand,
+      .nav-link {
+        color: #333 !important;
+        font-weight: 600;
+      }
+      .nav-link:hover {
+        color: #d4af37 !important;
+      }
+
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+      .hero {
+        height: 90vh;
+        background: url('images/foto.png') no-repeat center/cover;
+        position: relative;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .section-title {
+        color: #d4af37;
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+      .card {
+        border: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .gallery-img {
+        cursor: pointer;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+      .gallery-img:hover {
+        transform: scale(1.05);
+      }
+
+      .row-g-4 {
+        /* display: flex; */
+        /* gap: 10px; */
+        /* flex-wrap: wrap; */
+        display: grid;
+        grid-template-columns: 350px 350px 350px;
+        gap: 30px;
+      }
+
+      /* Footer */
+      .footer {
+        background: linear-gradient(to right, #2c3e50, #34495e);
+        color: #fff;
+        padding: 50px 20px 20px;
+        transition: all 0.4s ease;
+      }
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: auto;
+      }
+      .footer-col h3 {
+        margin-bottom: 15px;
+        font-size: 18px;
+        border-bottom: 2px solid #1abc9c;
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-col ul li {
+        margin: 8px 0;
+      }
+      .footer-col ul li a {
+        color: #ddd;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+      .footer-col ul li a:hover {
+        color: #1abc9c;
+      }
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+      .social-icons a img {
+        width: 30px;
+        height: 30px;
+        /* filter: brightness(0) invert(1); */
+        transition: transform 0.3s, filter 0.3s;
+      }
+      .social-icons a img:hover {
+        transform: scale(1.2);
+        filter: none;
+      }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 14px;
+      }
+
+      /* WA button */
+      .wa-float {
+        position: fixed;
+        bottom: 20px;
+        right: 25px;
+        z-index: 1000;
+      }
+      .wa-float img {
+        width: 60px;
+        transition: transform 0.3s ease;
+      }
+      .wa-float img:hover {
+        transform: scale(1.1);
+      }
+
+      /* 🌙 DARK MODE */
+      body.dark {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      body.dark .navbar {
+        background: #1f1f1f;
+        border-bottom-color: #20b954;
+      }
+      body.dark .navbar-brand,
+      body.dark .nav-link {
+        color: #e0e0e0 !important;
+      }
+      body.dark .nav-link:hover {
+        color: #20b954 !important;
+      }
+      body.dark .hero::after {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      body.dark .card {
+        background-color: #1f1f1f;
+        box-shadow: 0 4px 10px rgba(32, 185, 84, 0.3);
+        color: #e0e0e0;
+      }
+      body.dark .btn-warning {
+        background-color: #20b954;
+        border-color: #20b954;
+        color: white;
+      }
+      body.dark .footer {
+        background: linear-gradient(to right, #0f2027, #1b2c3a);
+        color: #ecf0f1;
+      }
+      body.dark .footer-col h3 {
+        border-bottom: 2px solid #20b954;
+      }
+      body.dark .footer-col ul li a {
+        color: #bbb;
+      }
+      body.dark .footer-col ul li a:hover {
+        color: #20b954;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-warning" href="#">Zawiyah Samara</a>
+        <!-- Tombol Hamburger -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#program">Program</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#berita">Berita</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#galeri">Galeri</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#prestasi">Prestasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak">Kontak</a>
+            </li>
+            <li class="nav-item">
+              <button
+                class="btn btn-outline-warning ms-3 dark-toggle"
+                onclick="toggleDarkMode()"
+                aria-label="Toggle Dark Mode"
+              >
+                🌙 Dark
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content" data-aos="fade-up">
+        <h1 class="display-4 fw-bold">
+          Pondok Pesantren Tahfidz Zawiyah Samara
+        </h1>
+        <p class="lead">Amaliah Agama, Prestasi Ilmiah dan Kesiapan Hidup</p>
+      </div>
+    </section>
+
+    <!-- Tentang -->
+    <section id="tentang" class="py-5">
+      <div class="container">
+        <h2 class="text-center section-title" data-aos="fade-up">
+          Tentang Kami
+        </h2>
+        <div class="row align-items-center">
+          <div class="col-md-6" data-aos="fade-right">
+            <p>
+              Pondok Pesantren Tahfidz Zawiyah Samara, berkomitmen mencetak
+              generasi muda yang unggul dalam ilmu agama maupun umum. Dengan
+              lingkungan yang nyaman, fasilitas lengkap, dan tenaga pendidik
+              profesional, kami membimbing santri menuju masa depan yang
+              gemilang.
+            </p>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <img
+              src="images/1.jpg"
+              class="img-fluid rounded shadow"
+              alt="Tentang Kami"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program -->
+    <section id="program" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center section-title" data-aos="fade-up">
+          Program Unggulan
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="zoom-in">
+            <div class="card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80"
+                class="card-img-top"
+                alt="Tahfidz"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Tahfidz Qur’an</h5>
+                <p class="card-text">
+                  Membimbing santri untuk menghafal Al-Qur’an dengan metode
+                  efektif dan menyenangkan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a6?auto=format&fit=crop&w=900&q=80"
+                class="card-img-top"
+                alt="Bahasa"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Bahasa Arab & Inggris</h5>
+                <p class="card-text">
+                  Pembelajaran bahasa asing untuk bekal komunikasi global dan
+                  studi lanjut.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+            <div class="card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1581090700227-4c4f50ecf524?auto=format&fit=crop&w=900&q=80"
+                class="card-img-top"
+                alt="Sains"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Sains & Teknologi</h5>
+                <p class="card-text">
+                  Mengintegrasikan ilmu modern dengan nilai-nilai Islami untuk
+                  masa depan gemilang.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Berita -->
+    <section id="berita" class="py-5">
+      <div class="container">
+        <h2 class="text-center section-title" data-aos="fade-up">
+          Berita Terbaru
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/400/250?random=1"
+                class="card-img-top"
+                alt="Berita 1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Wisuda Santri 2025</h5>
+                <p class="card-text">
+                  Prosesi wisuda khidmat dengan santri berhasil khatam
+                  Al-Qur’an.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/400/250?random=2"
+                class="card-img-top"
+                alt="Berita 2"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Pengajian Akbar</h5>
+                <p class="card-text">
+                  Jamaah hadir dalam pengajian bersama ulama ternama dari Timur
+                  Tengah.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="card h-100">
+              <img
+                src="https://picsum.photos/400/250?random=3"
+                class="card-img-top"
+                alt="Berita 3"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Lomba Sains Islami</h5>
+                <p class="card-text">
+                  Santri berprestasi menorehkan juara pada lomba sains.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galeri -->
+    <section id="galeri" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center section-title" data-aos="fade-up">
+          Galeri Kegiatan
+        </h2>
+        <div class="row-g-4">
+          <div class="col-md-4" data-aos="zoom-in">
+            <img
+              src="images/1.jpg"
+              alt="Kegiatan 1"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <img
+              src="images/2.jpg"
+              alt="Kegiatan 2"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+            <img
+              src="images/3.jpg"
+              alt="Kegiatan 3"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in">
+            <img
+              src="images/4.jpg"
+              alt="Kegiatan 1"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <img
+              src="images/5.jpg"
+              alt="Kegiatan 2"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+            <img
+              src="images/6.jpg"
+              alt="Kegiatan 3"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in">
+            <img
+              src="images/7.jpg"
+              alt="Kegiatan 1"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <img
+              src="images/8.jpg"
+              alt="Kegiatan 2"
+              width="350px"
+              height="350px"
+            />
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+            <img
+              src="images/9.jpg"
+              alt="Kegiatan 3"
+              width="350px"
+              height="350px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Galeri -->
+    <div class="modal fade" id="galleryModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="galleryCaption"></h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img id="galleryModalImg" src="" class="img-fluid rounded" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prestasi -->
+    <section id="prestasi" class="py-5">
+      <div class="container">
+        <h2 class="text-center section-title" data-aos="fade-up">
+          Prestasi Santri
+        </h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" data-aos="fade-right">
+            🏆 Juara 1 Lomba Tahfidz Nasional 2024
+          </li>
+          <li
+            class="list-group-item"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
+            🥇 Juara Olimpiade Matematika Islami 2023
+          </li>
+          <li
+            class="list-group-item"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            🥇 Juara Debat Bahasa Arab Tingkat ASEAN
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center section-title" data-aos="fade-up">
+          Kontak Kami
+        </h2>
+        <div class="row">
+          <div class="col-md-6" data-aos="fade-right">
+            <!-- <form>
+
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nama"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  placeholder="Pesan"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-warning w-100">Kirim</button>
+            </form> -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18..."
+              width="100%"
+              height="150"
+              style="border: 0; border-radius: 8px"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <h5>Alamat:</h5>
+            <p>Jl. Pesantren No.1, Jakarta</p>
+            <h5>Email:</h5>
+            <p>info@samara.srh</p>
+            <h5>Telepon:</h5>
+            <p>(021) 123456</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Tentang Kami</h3>
+          <p>
+            Pondok Pesantren Tahfidz Zawiyah Samara berkomitmen membangun
+            generasi Qur’ani yang cerdas dan berakhlak mulia.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Link Cepat</h3>
+          <ul>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#berita">Berita</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Kontak Kami</h3>
+          <p>Email: info@samara.srh</p>
+          <p>Telp: 021-xxxxxxx (Ciawi)</p>
+          <p>Telp: 021-xxxxxxx (Bogor)</p>
+          <p>Telp: 021-xxxxxxx (Bandung)</p>
+        </div>
+        <div class="footer-col">
+          <h3>Ikuti Kami</h3>
+          <div class="social-icons">
+            <a href="#"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                alt="Facebook"
+            /></a>
+            <a
+              href="https://www.instagram.com/pp_zawiyahsamara/"
+              target="_blank"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
+                alt="Twitter"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                alt="YouTube"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Pondok Pesantren Tahfidz Zawiyah Samara. All rights
+        reserved.
+      </div>
+    </footer>
+
+    <!-- WA Button -->
+    <a href="https://wa.me/6282217042664" class="wa-float" target="_blank">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="Chat WA"
+      />
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+
+      // Dark Mode
+      function toggleDarkMode() {
+        document.body.classList.toggle('dark');
+      }
+
+      // Gallery modal
+      const galleryImages = document.querySelectorAll('.gallery-img');
+      const galleryModal = new bootstrap.Modal(
+        document.getElementById('galleryModal')
+      );
+      const galleryModalImg = document.getElementById('galleryModalImg');
+      const galleryCaption = document.getElementById('galleryCaption');
+
+      galleryImages.forEach((img) => {
+        img.addEventListener('click', () => {
+          galleryModalImg.src = img.src;
+          galleryCaption.innerText = img.alt;
+          galleryModal.show();
+        });
+      });
+    </script>
+  </body>
+</html>
